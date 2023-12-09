@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nextjs-app:
+    # Build the image using the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Map the port inside the container to a port on the host machine
+    ports:
+      - "3000:3000"
+    # Specify any environment variables your app needs
+    environment:
+      - NODE_ENV=production
+    # Mount the local project directory to the container to enable live-reloading during development
+    volumes:
+      - .:/usr/src/app
